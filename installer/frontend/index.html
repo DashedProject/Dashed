@@ -7,13 +7,53 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-        <h1>Dashed</h1>
-        <p>Welcome to the Dashed installer.</p>
-        <button id="start">
-            Start
-        </button>
-    </main>
+    <div class="window">
+        <div class="title-bar">
+            <span>Dashed</span>
+            <div class="window-buttons">
+                <button>_</button>
+                <button>□</button>
+                <button>×</button>
+            </div>
+        </div>
+
+        <div class="window-content">
+            <div id="welcome" class="page">
+                <h1>Welcome to Dashed Setup</h1>
+                <p>
+                    This wizard will help you install Dashed
+                    on your computer.
+                </p>
+                <p>
+                    Click <strong>Next</strong> to begin.
+                </p>
+            </div>
+            <div id="language" class="page hidden">
+                <h1>Language</h1>
+                <p>
+                    Select the language you want to use during setup.
+                </p>
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+        </div>
+        <div class="status-bar">
+            <span id="status">Ready</span>
+        </div>
+        <div class="navigation">
+            <button id="back" disabled>
+                &lt; Back
+            </button>
+            <button id="next">
+                Next &gt;
+            </button>
+        </div>
+    </div>
     <script src="app.js"></script>
 </body>
 
