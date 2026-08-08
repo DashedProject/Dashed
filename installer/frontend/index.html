@@ -9,17 +9,27 @@
 <body>
     <div class="window">
         <div class="title-bar">
-            <span>Dashed</span>
+            <span>
+                Dashed Setup
+            </span>
             <div class="window-buttons">
-                <button>_</button>
-                <button>□</button>
-                <button>×</button>
+                <button>
+                    _
+                </button>
+                <button>
+                    □
+                </button>
+                <button>
+                    ×
+                </button>
             </div>
         </div>
 
         <div class="window-content">
             <div id="welcome" class="page">
-                <h1>Welcome to Dashed Setup</h1>
+                <h1>
+                    Welcome to Dashed Setup
+                </h1>
                 <p>
                     This wizard will help you install Dashed
                     on your computer.
@@ -29,21 +39,157 @@
                 </p>
             </div>
             <div id="language" class="page hidden">
-                <h1>Language</h1>
+                <h1>
+                    Language
+                </h1>
                 <p>
                     Select the language you want to use during setup.
                 </p>
                 <select id="language-select">
-                    <option value="en">English</option>
-                    <option value="nl">Nederlands</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                    <option value="es">Español</option>
+                    <option value="en">
+                        English
+                    </option>
+                    <option value="nl">
+                        Nederlands
+                    </option>
+                    <option value="fr">
+                        Français
+                    </option>
+                    <option value="de">
+                        Deutsch
+                    </option>
+                    <option value="es">
+                        Español
+                    </option>
                 </select>
+            </div>
+            <div id="region" class="page hidden">
+                <h1>
+                    Region
+                </h1>
+                <p>
+                    Select your country or region.
+                </p>
+                <select id="region-select">
+                    <option value="US">
+                        United States
+                    </option>
+                    <option value="CA">
+                        Canada
+                    </option>
+                    <option value="GB">
+                        United Kingdom
+                    </option>
+                    <option value="NL">
+                        Netherlands
+                    </option>
+                    <option value="BE">
+                        Belgium
+                    </option>
+                    <option value="DE">
+                        Germany
+                    </option>
+                    <option value="FR">
+                        France
+                    </option>
+                    <option value="ES">
+                        Spain
+                    </option>
+                </select>
+            </div>
+            <div id="keyboard" class="page hidden">
+                <h1>
+                    Keyboard
+                </h1>
+                <p>
+                    Select your keyboard layout.
+                </p>
+                <select id="keyboard-select">
+                    <option value="us">
+                        US
+                    </option>
+                    <option value="uk">
+                        UK
+                    </option>
+                    <option value="nl">
+                        Dutch
+                    </option>
+                    <option value="de">
+                        German
+                    </option>
+                    <option value="fr">
+                        French
+                    </option>
+                </select>
+            </div>
+            <div id="account" class="page hidden">
+                <h1>
+                    Create your account
+                </h1>
+                <p>
+                    This account will be used to log in to your
+                    Dashed system.
+                </p>
+                <p>
+                    <label for="username">
+                        Username:
+                    </label>
+                    <br>
+                    <input
+                        id="username"
+                        type="text"
+                        autocomplete="off"
+                    >
+                </p>
+                <p>
+                    <label for="password">
+                        Password:
+                    </label>
+                    <br>
+                    <input
+                        id="password"
+                        type="password"
+                        autocomplete="new-password"
+                    >
+                </p>
+                <p>
+                    <label for="password-confirm">
+                        Confirm password:
+                    </label>
+                    <br>
+                    <input
+                        id="password-confirm"
+                        type="password"
+                        autocomplete="new-password"
+                    >
+                </p>
+                <p
+                    id="account-error"
+                    class="error hidden"
+                ></p>
+            </div>
+            <div id="disk" class="page hidden">
+                <h1>
+                    Select installation disk
+                </h1>
+                <p>
+                    Select the disk where you want to install Dashed.
+                </p>
+                <div id="disk-list">
+                    <p>
+                        Loading disks...
+                    </p>
+                </div>
+                <p
+                    id="disk-error"
+                    class="error hidden"
+                ></p>
             </div>
         </div>
         <div class="status-bar">
-            <span id="status">Ready</span>
+            <span id="status">
+                Ready
+            </span>
         </div>
         <div class="navigation">
             <button id="back" disabled>
@@ -56,5 +202,4 @@
     </div>
     <script src="app.js"></script>
 </body>
-
 </html>

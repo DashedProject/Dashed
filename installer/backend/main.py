@@ -20,3 +20,18 @@ installer = DashedInstall()
 @app.get("/status")
 def status():
     return installer.get_status()
+
+@app.get("/disks")
+def disks():
+    return [
+        {
+            "device": "/dev/nvme0n1",
+            "size": "512 GB",
+            "model": "Dashed Virtual Disk"
+        },
+        {
+            "device": "/dev/sda",
+            "size": "1 TB",
+            "model": "Dashed Virtual Disk 2"
+        }
+    ]
