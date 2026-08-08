@@ -32,6 +32,6 @@ def disks():
         {
             "device": "/dev/sda",
             "size": "1 TB",
-            "model": "Dashed Virtual Disk 2"
+            "model": "Dashed Virtual Disk"
         }
     ]

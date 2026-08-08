@@ -4,7 +4,8 @@ const pages = [
     document.getElementById("region"),
     document.getElementById("keyboard"),
     document.getElementById("account"),
-    document.getElementById("disk")
+    document.getElementById("disk"),
+    document.getElementById("summary")
 ];
 
 const backButton =
@@ -39,6 +40,21 @@ const diskList =
 const diskError =
     document.getElementById("disk-error");
 
+const summaryLanguage =
+    document.getElementById("summary-language");
+
+const summaryRegion =
+    document.getElementById("summary-region");
+
+const summaryKeyboard =
+    document.getElementById("summary-keyboard");
+
+const summaryUsername =
+    document.getElementById("summary-username");
+
+const summaryDisk =
+    document.getElementById("summary-disk");
+
 let currentPage = 0;
 
 const installConfig = {
@@ -49,6 +65,21 @@ const installConfig = {
     password: "",
     disk: null
 };
+
+function updateSummary() {
+
+    summaryLanguage.textContent =
+        installConfig.language;
+    summaryRegion.textContent =
+        installConfig.region;
+    summaryKeyboard.textContent =
+        installConfig.keyboard;
+    summaryUsername.textContent =
+        installConfig.username;
+    summaryDisk.textContent =
+        installConfig.disk;
+
+}
 
 function showPage(page) {
     pages.forEach((element, index) => {
@@ -67,6 +98,10 @@ function showPage(page) {
 
     if (page === 5) {
         loadDisks();
+    }
+
+    if (page === 6) {
+        updateSummary();
     }
 }
 
