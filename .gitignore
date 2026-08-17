@@ -1,2 +1,12 @@
+# General
+*.tmp
+*.log
+
+# Python stuff
 .venv
 *.pyc
+
+# ISO Builds
+*.iso
+iso/work/*
+iso/out/
