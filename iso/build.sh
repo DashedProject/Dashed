@@ -3,7 +3,7 @@
 set -e
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROFILE="$SCRIPT_DIR/profile"
-WORK="$SCRIPT_DIR/work"
+WORK="/archiso-work"
 OUTPUT="$SCRIPT_DIR/out"
 
 mkarchiso \

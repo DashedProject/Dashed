@@ -10,3 +10,6 @@
 *.iso
 iso/work/*
 iso/out/
+
+# Duplicates
+iso/profile/airootfs/opt/dashed/installer/

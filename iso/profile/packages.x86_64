@@ -10,3 +10,5 @@ pv
 qemu-guest-agent
 syslinux
 virtualbox-guest-utils-nox
+python
+python-pip
