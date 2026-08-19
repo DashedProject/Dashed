@@ -13,3 +13,25 @@ iso/out/
 
 # Duplicates
 iso/profile/airootfs/opt/dashed/installer/
+
+# Symlinks
+iso/profile/airootfs/etc/localtime
+iso/profile/airootfs/etc/systemd/system/getty@tty1.service
+iso/profile/airootfs/etc/systemd/system/cloud-init.target.wants/cloud-config.service
+iso/profile/airootfs/etc/systemd/system/cloud-init.target.wants/cloud-final.service
+iso/profile/airootfs/etc/systemd/system/cloud-init.target.wants/cloud-init-local.service
+iso/profile/airootfs/etc/systemd/system/cloud-init.target.wants/cloud-init-main.service
+iso/profile/airootfs/etc/systemd/system/cloud-init.target.wants/cloud-init-network.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/dashed.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/hv_fcopy_daemon.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/hv_kvp_daemon.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/hv_vss_daemon.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/sshd.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/systemd-networkd.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/systemd-resolved.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/vboxservice.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/vmtoolsd.service
+iso/profile/airootfs/etc/systemd/system/multi-user.target.wants/vmware-vmblock-fuse.service
+iso/profile/airootfs/etc/systemd/system/network-online.target.wants/systemd-networkd-wait-online.service
+iso/profile/airootfs/etc/systemd/system/sockets.target.wants/systemd-networkd.socket
+iso/profile/airootfs/etc/systemd/system-generators/systemd-gpt-auto-generator

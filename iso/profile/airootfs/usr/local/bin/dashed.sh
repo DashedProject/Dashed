@@ -7,7 +7,10 @@ echo "I WORK"
 INSTALLER="/opt/dashed/installer"
 REQUIREMENTS="$INSTALLER/backend/requirements.txt"
 
-python -m pip install uvicorn fastapi --break-system-packages
+python -m pip install \
+    --break-system-packages \
+    --no-cache-dir \
+    -r "$REQUIREMENTS"
 
 cd "$INSTALLER"
 

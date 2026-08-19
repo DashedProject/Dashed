@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
+import terminal
+
 app = FastAPI(
     title="Dashed"
 )
@@ -8,7 +10,7 @@ app = FastAPI(
 app.mount(
     "/",
     StaticFiles(
-        directory=".",
+        directory="./static",
         html=True
     ),
 )

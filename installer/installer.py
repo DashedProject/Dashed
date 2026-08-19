@@ -3,11 +3,13 @@ import signal
 import subprocess
 import sys
 
+from frontend.terminal import terminal_ui
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 processes = []
 
-print("Running installer")
+os.system("clear")
 
 def cleanup(signum=None, frame=None):
     for process in processes:
@@ -38,8 +40,12 @@ try:
                 "0.0.0.0",
                 "--port",
                 "7001",
+                "--log-level",
+                "critical",
             ],
             cwd=os.path.join(BASE_DIR, "backend"),
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
         ))
 
     processes.append(
@@ -53,12 +59,19 @@ try:
                 "0.0.0.0",
                 "--port",
                 "8001",
+                "--log-level",
+                "critical",
             ],
             cwd=os.path.join(BASE_DIR, "frontend"),
-        ))
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            )
+        )
+
+    terminal_ui()
 
     for process in processes:
         process.wait()
-
+    
 finally:
     cleanup()
