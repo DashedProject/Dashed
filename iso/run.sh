@@ -11,4 +11,4 @@ if [[ -z "$ISO" ]]; then
     exit 1
 fi
 
-"$SCRIPT_DIR/run_archiso.sh" -i "$ISO"
+"$SCRIPT_DIR/run_archiso.sh" -i "$ISO" -c disk.img

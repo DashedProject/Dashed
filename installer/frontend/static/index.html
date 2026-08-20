@@ -6,130 +6,93 @@
     <title>Dashed Installer</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="window">
         <div class="title-bar">
-            <span>
-                Dashed Setup
-            </span>
+            <span>Dashed Setup</span>
+
             <div class="window-buttons">
-                <button>
-                    _
-                </button>
-                <button>
-                    □
-                </button>
-                <button>
-                    ×
-                </button>
+                <button>_</button>
+                <button>□</button>
+                <button>×</button>
             </div>
         </div>
 
         <div class="window-content">
+
             <div id="welcome" class="page">
-                <h1>
-                    Welcome to Dashed Setup
-                </h1>
+                <h1>Welcome to Dashed Setup</h1>
+
                 <p>
                     This wizard will help you install Dashed
                     on your server.
                 </p>
+
                 <p>
                     Click <strong>Next</strong> to begin.
                 </p>
             </div>
+
             <div id="language" class="page hidden">
-                <h1>
-                    Language
-                </h1>
+                <h1>Language</h1>
+
                 <p>
                     Select the language you want to use during setup.
                 </p>
+
                 <select id="language-select">
-                    <option value="en">
-                        English
-                    </option>
-                    <option value="nl">
-                        Nederlands
-                    </option>
-                    <option value="fr">
-                        Français
-                    </option>
-                    <option value="de">
-                        Deutsch
-                    </option>
-                    <option value="es">
-                        Español
-                    </option>
+                    <option value="en">English</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="es">Español</option>
                 </select>
             </div>
+
             <div id="region" class="page hidden">
-                <h1>
-                    Region
-                </h1>
+                <h1>Region</h1>
+
                 <p>
                     Select your country or region.
                 </p>
+
                 <select id="region-select">
-                    <option value="US">
-                        United States
-                    </option>
-                    <option value="CA">
-                        Canada
-                    </option>
-                    <option value="GB">
-                        United Kingdom
-                    </option>
-                    <option value="NL">
-                        Netherlands
-                    </option>
-                    <option value="BE">
-                        Belgium
-                    </option>
-                    <option value="DE">
-                        Germany
-                    </option>
-                    <option value="FR">
-                        France
-                    </option>
-                    <option value="ES">
-                        Spain
-                    </option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="BE">Belgium</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="ES">Spain</option>
                 </select>
             </div>
+
             <div id="keyboard" class="page hidden">
-                <h1>
-                    Keyboard
-                </h1>
+                <h1>Keyboard</h1>
+
                 <p>
                     Select your keyboard layout.
                 </p>
+
                 <select id="keyboard-select">
-                    <option value="us">
-                        US
-                    </option>
-                    <option value="uk">
-                        UK
-                    </option>
-                    <option value="nl">
-                        Dutch
-                    </option>
-                    <option value="de">
-                        German
-                    </option>
-                    <option value="fr">
-                        French
-                    </option>
+                    <option value="us">US</option>
+                    <option value="uk">UK</option>
+                    <option value="nl">Dutch</option>
+                    <option value="de">German</option>
+                    <option value="fr">French</option>
                 </select>
             </div>
+
             <div id="account" class="page hidden">
-                <h1>
-                    Create your account
-                </h1>
+                <h1>Create your account</h1>
+
                 <p>
                     This account will be used to log in to your
                     Dashed system.
                 </p>
+
                 <p>
                     <label for="username">
                         Username:
@@ -141,6 +104,7 @@
                         autocomplete="off"
                     >
                 </p>
+
                 <p>
                     <label for="password">
                         Password:
@@ -152,6 +116,7 @@
                         autocomplete="new-password"
                     >
                 </p>
+
                 <p>
                     <label for="password-confirm">
                         Confirm password:
@@ -163,41 +128,34 @@
                         autocomplete="new-password"
                     >
                 </p>
-                <p
-                    id="account-error"
-                    class="error hidden"
-                ></p>
+
+                <p id="account-error" class="error hidden"></p>
             </div>
+
             <div id="disk" class="page hidden">
-                <h1>
-                    Select installation disk
-                </h1>
+                <h1>Select installation disk</h1>
+
                 <p>
                     Select the disk where you want to install Dashed.
                 </p>
+
                 <div id="disk-list">
                     <p>
                         Loading disks...
                     </p>
                 </div>
-                <p
-                    id="disk-error"
-                    class="error hidden"
-                ></p>
-            </div>
-            <div id="summary" class="page hidden">
 
-                <h1>
-                    Ready to install
-                </h1>
+                <p id="disk-error" class="error hidden"></p>
+            </div>
+
+            <div id="summary" class="page hidden">
+                <h1>Ready to install</h1>
 
                 <p>
                     Please review your installation settings.
                 </p>
 
-
                 <div class="summary-box">
-
                     <p>
                         <strong>Language:</strong>
                         <span id="summary-language"></span>
@@ -222,33 +180,31 @@
                         <strong>Installation disk:</strong>
                         <span id="summary-disk"></span>
                     </p>
-
                 </div>
 
-
                 <p class="warning">
-
                     Warning: Installing Dashed will erase
                     the selected disk.
-
                 </p>
-
             </div>
+
         </div>
+
         <div class="status-bar">
-            <span id="status">
-                Ready
-            </span>
+            <span id="status">Ready</span>
         </div>
+
         <div class="navigation">
             <button id="back" disabled>
                 &lt; Back
             </button>
+
             <button id="next">
                 Next &gt;
             </button>
         </div>
     </div>
+
     <script src="app.js"></script>
 </body>
 </html>

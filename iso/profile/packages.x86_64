@@ -12,3 +12,8 @@ syslinux
 virtualbox-guest-utils-nox
 python
 python-pip
+arch-install-scripts
+gptfdisk
+dosfstools
+e2fsprogs
+efibootmgr

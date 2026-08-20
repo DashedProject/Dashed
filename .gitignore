@@ -14,6 +14,10 @@ iso/out/
 # Duplicates
 iso/profile/airootfs/opt/dashed/installer/
 
+# Fake disks
+iso/disk.img
+iso/dashed-disk.qcow2
+
 # Symlinks
 iso/profile/airootfs/etc/localtime
 iso/profile/airootfs/etc/systemd/system/getty@tty1.service
