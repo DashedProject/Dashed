@@ -1,13 +1,14 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import subprocess
 
 from dashed_install import DashedInstall
+
 
 app = FastAPI(
     title="Dashed API",
     version="0.0.1"
 )
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -15,6 +16,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 installer = DashedInstall()
 
@@ -26,20 +28,13 @@ def status():
 
 @app.get("/disks")
 def disks():
-    return installer.get_disks()
-
-
-@app.get("/disks/{device_name}")
-def disk(device_name: str):
-    device = f"/dev/{device_name}"
-
     try:
-        return installer.get_disk(device)
+        return installer.get_disks()
 
-    except ValueError:
+    except Exception as error:
         raise HTTPException(
-            status_code=404,
-            detail="Disk not found"
+            status_code=500,
+            detail=str(error)
         )
 
 
@@ -48,14 +43,10 @@ def install(config: dict):
     try:
         return installer.install(config)
 
-    except ValueError as error:
-        raise HTTPException(
-            status_code=400,
-            detail=str(error)
-        )
+    except Exception as error:
+        installer.status = "failed"
 
-    except subprocess.CalledProcessError as error:
         raise HTTPException(
             status_code=500,
-            detail=f"Partitioning failed: {error}"
+            detail=str(error)
         )
