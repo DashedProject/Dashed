@@ -1,3 +1,5 @@
+const API_URL = `http://${window.location.hostname}:7001`;
+
 const pages = [
     document.getElementById("welcome"),
     document.getElementById("language"),
@@ -222,7 +224,7 @@ async function loadDisks() {
 
     try {
         const response = await fetch(
-            "http://localhost:7001/disks"
+            `${API_URL}/disks`
         );
 
         if (!response.ok) {
@@ -315,7 +317,7 @@ async function startInstallation() {
 
     try {
         const response = await fetch(
-            "http://localhost:7001/install",
+            `${API_URL}/install`,
             {
                 method: "POST",
                 headers: {
