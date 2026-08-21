@@ -3,6 +3,7 @@ const pages = [
     document.getElementById("language"),
     document.getElementById("region"),
     document.getElementById("keyboard"),
+    document.getElementById("hostname"),
     document.getElementById("account"),
     document.getElementById("disk"),
     document.getElementById("summary")
@@ -16,6 +17,9 @@ const languageSelect = document.getElementById("language-select");
 const regionSelect = document.getElementById("region-select");
 const keyboardSelect = document.getElementById("keyboard-select");
 
+const hostnameInput = document.getElementById("hostname-input");
+const hostnameError = document.getElementById("hostname-error");
+
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const passwordConfirmInput = document.getElementById("password-confirm");
@@ -27,6 +31,7 @@ const diskError = document.getElementById("disk-error");
 const summaryLanguage = document.getElementById("summary-language");
 const summaryRegion = document.getElementById("summary-region");
 const summaryKeyboard = document.getElementById("summary-keyboard");
+const summaryHostname = document.getElementById("summary-hostname");
 const summaryUsername = document.getElementById("summary-username");
 const summaryDisk = document.getElementById("summary-disk");
 
@@ -36,6 +41,7 @@ const installConfig = {
     language: "en",
     region: "US",
     keyboard: "us",
+    hostname: "",
     username: "",
     password: "",
     disk: null
@@ -45,6 +51,7 @@ function updateSummary() {
     summaryLanguage.textContent = installConfig.language;
     summaryRegion.textContent = installConfig.region;
     summaryKeyboard.textContent = installConfig.keyboard;
+    summaryHostname.textContent = installConfig.hostname;
     summaryUsername.textContent = installConfig.username;
     summaryDisk.textContent = installConfig.disk || "None";
 }
@@ -65,11 +72,11 @@ function showPage(page) {
     statusText.textContent =
         `Step ${page + 1} of ${pages.length}`;
 
-    if (page === 5) {
+    if (page === 6) {
         loadDisks();
     }
 
-    if (page === 6) {
+    if (page === 7) {
         updateSummary();
     }
 }
@@ -88,29 +95,83 @@ function saveCurrentPage() {
     }
 
     if (currentPage === 4) {
-        installConfig.username = usernameInput.value.trim();
-        installConfig.password = passwordInput.value;
+        installConfig.hostname =
+            hostnameInput.value.trim();
     }
 
     if (currentPage === 5) {
+        installConfig.username =
+            usernameInput.value.trim();
+
+        installConfig.password =
+            passwordInput.value;
+    }
+
+    if (currentPage === 6) {
         const selectedDisk = document.querySelector(
             'input[name="disk"]:checked'
         );
 
         if (selectedDisk) {
-            installConfig.disk = selectedDisk.value;
+            installConfig.disk =
+                selectedDisk.value;
         }
     }
 }
 
+function validateHostname() {
+    const hostname =
+        hostnameInput.value.trim();
+
+    if (hostname.length === 0) {
+        hostnameError.textContent =
+            "Please enter a hostname.";
+
+        hostnameError.classList.remove("hidden");
+
+        return false;
+    }
+
+    if (hostname.length > 63) {
+        hostnameError.textContent =
+            "Hostname cannot be longer than 63 characters.";
+
+        hostnameError.classList.remove("hidden");
+
+        return false;
+    }
+
+    if (!/^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]$/.test(hostname)) {
+        hostnameError.textContent =
+            "Hostname may only contain letters, numbers, and hyphens.";
+
+        hostnameError.classList.remove("hidden");
+
+        return false;
+    }
+
+    hostnameError.classList.add("hidden");
+
+    return true;
+}
+
 function validateCurrentPage() {
-    if (currentPage !== 4) {
+    if (currentPage === 4) {
+        return validateHostname();
+    }
+
+    if (currentPage !== 5) {
         return true;
     }
 
-    const username = usernameInput.value.trim();
-    const password = passwordInput.value;
-    const confirmation = passwordConfirmInput.value;
+    const username =
+        usernameInput.value.trim();
+
+    const password =
+        passwordInput.value;
+
+    const confirmation =
+        passwordConfirmInput.value;
 
     if (username.length === 0) {
         accountError.textContent =
@@ -154,7 +215,8 @@ function validateCurrentPage() {
 }
 
 async function loadDisks() {
-    diskList.innerHTML = "<p>Loading disks...</p>";
+    diskList.innerHTML =
+        "<p>Loading disks...</p>";
 
     diskError.classList.add("hidden");
 
@@ -181,11 +243,14 @@ async function loadDisks() {
         }
 
         disks.forEach((disk, index) => {
-            const label = document.createElement("label");
+            const label =
+                document.createElement("label");
 
-            label.className = "disk-option";
+            label.className =
+                "disk-option";
 
-            const radio = document.createElement("input");
+            const radio =
+                document.createElement("input");
 
             radio.type = "radio";
             radio.name = "disk";
@@ -193,11 +258,14 @@ async function loadDisks() {
             radio.checked = index === 0;
 
             radio.addEventListener("change", () => {
-                installConfig.disk = disk.device;
+                installConfig.disk =
+                    disk.device;
+
                 diskError.classList.add("hidden");
             });
 
-            const text = document.createElement("span");
+            const text =
+                document.createElement("span");
 
             text.textContent =
                 `${disk.device} — ${disk.size} — ${disk.model}`;
@@ -208,7 +276,8 @@ async function loadDisks() {
             diskList.appendChild(label);
         });
 
-        installConfig.disk = disks[0].device;
+        installConfig.disk =
+            disks[0].device;
 
     } catch (error) {
         diskList.innerHTML = "";
@@ -256,11 +325,13 @@ async function startInstallation() {
             }
         );
 
-        const result = await response.json();
+        const result =
+            await response.json();
 
         if (!response.ok) {
             throw new Error(
-                result.detail || "Installation failed."
+                result.detail ||
+                "Installation failed."
             );
         }
 
@@ -287,10 +358,11 @@ function next() {
 
     saveCurrentPage();
 
-    if (currentPage === 5) {
-        const selectedDisk = document.querySelector(
-            'input[name="disk"]:checked'
-        );
+    if (currentPage === 6) {
+        const selectedDisk =
+            document.querySelector(
+                'input[name="disk"]:checked'
+            );
 
         if (!selectedDisk) {
             diskError.textContent =
@@ -301,7 +373,8 @@ function next() {
             return;
         }
 
-        installConfig.disk = selectedDisk.value;
+        installConfig.disk =
+            selectedDisk.value;
     }
 
     if (currentPage < pages.length - 1) {
@@ -319,8 +392,14 @@ function back() {
     }
 }
 
-nextButton.addEventListener("click", next);
+nextButton.addEventListener(
+    "click",
+    next
+);
 
-backButton.addEventListener("click", back);
+backButton.addEventListener(
+    "click",
+    back
+);
 
 showPage(currentPage);

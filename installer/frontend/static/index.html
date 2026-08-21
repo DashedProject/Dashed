@@ -85,6 +85,34 @@
                 </select>
             </div>
 
+            <div id="hostname" class="page hidden">
+                <h1>Hostname</h1>
+
+                <p>
+                    Choose a name for this Dashed system.
+                </p>
+
+                <p>
+                    <label for="hostname-input">
+                        Hostname:
+                    </label>
+                    <br>
+                    <input
+                        id="hostname-input"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="dashed"
+                    >
+                </p>
+
+                <p>
+                    Your hostname can contain letters,
+                    numbers, and hyphens.
+                </p>
+
+                <p id="hostname-error" class="error hidden"></p>
+            </div>
+
             <div id="account" class="page hidden">
                 <h1>Create your account</h1>
 
@@ -169,6 +197,11 @@
                     <p>
                         <strong>Keyboard:</strong>
                         <span id="summary-keyboard"></span>
+                    </p>
+
+                    <p>
+                        <strong>Hostname:</strong>
+                        <span id="summary-hostname"></span>
                     </p>
 
                     <p>
